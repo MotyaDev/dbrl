@@ -1,0 +1,14 @@
+cxx = g++
+cflags = -Wall -Wextra -std=c++17
+ldflags = -lstdc++fs
+
+rule compile
+  command = $cxx $cflags -c $in -o $out
+
+rule link
+  command = $cxx $ldflags $in -o $out
+
+build dbrl.o: compile dbrl.cpp
+build dbrl: link dbrl.o
+
+default dbrl
